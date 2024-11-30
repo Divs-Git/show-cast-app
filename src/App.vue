@@ -1,17 +1,16 @@
 <template>
+  <AppHero />
   <main>
-    <h1>
-      <AppHero />
-    </h1>
-    <SelectionMenu />
+    <RouterView />
   </main>
 </template>
 <script setup>
 import AppHero from './components/AppHero.vue'
-import SelectionMenu from './components/SelectionMenu.vue'
 </script>
 
-<style>
+<style lang="scss"></style>
+
+<!-- <style>
 /* Hero Styles */
 
 .hero {
@@ -126,4 +125,4 @@ p {
   display: flex;
   flex-wrap: wrap;
 }
-</style>
+</style> -->
