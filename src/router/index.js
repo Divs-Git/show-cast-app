@@ -16,7 +16,7 @@ const router = createRouter({
       redirect: '/',
     },
     {
-      path: '/collections',
+      path: '/collections/:collectionType',
       name: 'collections',
       component: CollectionView,
     },

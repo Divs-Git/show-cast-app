@@ -1,0 +1,90 @@
+<template>
+  <div class="card">
+    <div class="card-image">
+      <figure class="image">
+        <img
+          :src="`https://image.tmdb.org/t/p/original/${collection.poster_path}`"
+          alt="Poster image"
+        />
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="content">
+        {{ trimmedTitle }}
+        <br />
+        <p>
+          {{ collectionType === 'movie' ? collection.release_date : collection.first_air_date }}
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { computed } from 'vue'
+
+const { collection, collectionType } = defineProps(['collection', 'collectionType'])
+
+const trimmedTitle = computed(() => {
+  let splittedArray = []
+  if (collectionType === 'movie') {
+    splittedArray = collection.title.split('').filter((el) => el === ' ')
+    if (splittedArray.length >= 2) {
+      return collection.title.slice(0, 25)
+    } else {
+      return collection.title
+    }
+  } else {
+    splittedArray = collection.name.split('').filter((el) => el === ' ')
+    if (splittedArray.length >= 2) {
+      return collection.name.slice(0, 25)
+    } else {
+      return collection.name
+    }
+  }
+})
+</script>
+
+<style lang="scss" scoped>
+.card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  }
+}
+
+img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.card-content {
+  width: 100%;
+  min-height: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  padding-top: 15px;
+}
+
+p {
+  font-size: 12px;
+  font-weight: normal;
+}
+</style>

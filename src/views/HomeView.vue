@@ -1,16 +1,16 @@
 <template>
-  <div class="entertainment-selector">
-    <h1 class="title has-text-centered">Choose Your Entertainment</h1>
+  <div class="collection-selector">
+    <h1 class="title has-text-centered">Choose From Collections</h1>
     <div class="columns is-centered">
       <div class="column is-5">
-        <div class="card tv-shows" @click="selectOption('TV Shows')">
+        <div class="card tv-shows" @click="selectOption('tv')">
           <div class="card-content">
             <p class="subtitle has-text-centered">TV Shows</p>
           </div>
         </div>
       </div>
       <div class="column is-5">
-        <div class="card movies" @click="selectOption('Movies')">
+        <div class="card movies" @click="selectOption('movie')">
           <div class="card-content">
             <p class="subtitle has-text-centered">Movies</p>
           </div>
@@ -20,25 +20,24 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'EntertainmentSelector',
-  methods: {
-    selectOption(option) {
-      console.log(option) // Handle the option selection (navigate or fetch data)
-    },
-  },
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const selectOption = (collectionType) => {
+  router.push({ name: 'collections', params: { collectionType } })
 }
 </script>
 
 <style lang="scss" scoped>
-.entertainment-selector {
-  margin-top: 200px;
+.collection-selector {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
+  height: 80vh;
 
   .title {
     font-size: 3rem;
