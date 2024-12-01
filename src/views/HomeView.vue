@@ -106,8 +106,9 @@ const selectOption = (collectionType) => {
     }
 
     @media (max-width: 480px) {
-      width: 100%;
+      width: 200px;
       height: 200px;
+      margin: 0 auto;
     }
 
     &.tv-shows {
