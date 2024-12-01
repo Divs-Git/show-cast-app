@@ -3,12 +3,26 @@
     <InputField />
   </div>
   <div class="hero">
-    <h1 class="title is-1">Movies</h1>
-    <h2 class="subtitle">Subtitle</h2>
+    <h1 class="title is-1">{{ title }}</h1>
+    <h2 class="subtitle">{{ subTitle }}</h2>
   </div>
 </template>
 <script setup>
+import { onMounted, ref } from 'vue'
 import InputField from './InputField.vue'
+
+const props = defineProps(['type', 'collectionType', 'name', 'subTitle'])
+const title = ref('')
+
+onMounted(() => {
+  if (props.type === 'collection') {
+    if (props.collectionType === 'movie') {
+      title.value = 'Movies'
+    }
+  } else if (props.type === 'cast') {
+    title.value = props.name
+  }
+})
 </script>
 <style lang="scss" scoped>
 .hero {

@@ -2,10 +2,7 @@
   <div class="card" @click="goToCastView">
     <div class="card-image">
       <figure class="image">
-        <img
-          :src="`https://image.tmdb.org/t/p/original/${collection.poster_path}`"
-          alt="Poster image"
-        />
+        <img :src="imgUrl" alt="Poster image" />
       </figure>
     </div>
     <div class="card-content">
@@ -21,10 +18,11 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+const imgUrl = ref('')
 
 const { collection, collectionType } = defineProps(['collection', 'collectionType'])
 
@@ -48,9 +46,35 @@ const trimmedTitle = computed(() => {
 })
 const goToCastView = () => {
   if (collectionType === 'movie') {
-    router.push({ name: 'movie-casts', params: { id: collection.id } })
+    router.push({
+      name: 'movie-casts',
+      params: { id: collection.id },
+      query: {
+        collectionType: collectionType,
+        collectionName: collection.title,
+        year: collection.release_date.substring(0, 4),
+      },
+    })
+  } else if (collectionType === 'tv') {
+    router.push({
+      name: 'tv-casts',
+      params: { id: collection.id },
+      query: {
+        collectionType: collectionType,
+        collectionName: collection.name,
+        year: collection.first_air_date.substring(0, 4),
+      },
+    })
   }
 }
+
+onMounted(() => {
+  if (collection.poster_path) {
+    imgUrl.value = `https://image.tmdb.org/t/p/original/${collection.poster_path}`
+  } else {
+    imgUrl.value = '../../src/assets/movie.jpg'
+  }
+})
 </script>
 
 <style lang="scss" scoped>

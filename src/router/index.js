@@ -39,11 +39,13 @@ const router = createRouter({
       path: '/collections/tv/:id',
       name: 'tv-casts',
       component: CastView,
+      props: true,
     },
     {
       path: '/collections/movie/:id',
       name: 'movie-casts',
       component: CastView,
+      props: true,
     },
     {
       path: '/:pathMatch(.*)*',
