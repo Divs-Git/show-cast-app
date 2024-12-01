@@ -2,9 +2,9 @@
 
 Show Cast is a sleek and responsive web application that allows users to explore a variety of TV shows and movies by categories. Built with Vue.js and styled with Bulma SCSS, it offers an intuitive interface and seamless user experience.
 
-![Show Cast App Screenshot](./src/assets/screenshots/image1.png)
+## Vercel Link
 
----
+[Show casts App](https://show-casts-app.vercel.app/)
 
 ## Features ✨
 
@@ -53,12 +53,11 @@ Show Cast is a sleek and responsive web application that allows users to explore
 ```bash
 
 src/
-├── assets/ # Images and static files
+├── assets/ # Images and static files including main.scss
 ├── components/ # Vue components
 ├── views/ # Pages of the application
 ├── App.vue # Main Vue component
 ├── main.js # Entry point
-└── styles/ # Bulma SCSS customizations
 ```
 
 ## Screenshots 📸
