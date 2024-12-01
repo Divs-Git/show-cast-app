@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @click="goToCastView">
+  <div class="card" :class="{ 'is-skeleton': isLoading }" @click="goToCastView">
     <div class="card-image">
       <figure class="image">
         <img :src="imgUrl" alt="Poster image" />
@@ -24,7 +24,11 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const imgUrl = ref('')
 
-const { collection, collectionType } = defineProps(['collection', 'collectionType'])
+const { isLoading, collection, collectionType } = defineProps([
+  'collection',
+  'collectionType',
+  'isLoading',
+])
 
 const trimmedTitle = computed(() => {
   let splittedArray = []

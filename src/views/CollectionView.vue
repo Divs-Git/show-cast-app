@@ -8,8 +8,8 @@
     <template #hero>
       <AppHero :collectionType="collectionType" type="collection" />
     </template>
-    <template #card="{ item }">
-      <CollectionCard :collection="item" :collectionType="collectionType" />
+    <template #card="{ item, isLoading }">
+      <CollectionCard :collection="item" :collectionType="collectionType" :isLoading="isLoading" />
     </template>
   </ViewBase>
 </template>

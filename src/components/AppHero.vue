@@ -1,6 +1,6 @@
 <template>
   <div class="input-field">
-    <InputField />
+    <InputField :collectionType="collectionType" />
   </div>
   <div class="hero">
     <h1 class="title is-1">{{ title }}</h1>
@@ -18,6 +18,8 @@ onMounted(() => {
   if (props.type === 'collection') {
     if (props.collectionType === 'movie') {
       title.value = 'Movies'
+    } else {
+      title.value = 'TV-Shows / Series'
     }
   } else if (props.type === 'cast') {
     title.value = props.name

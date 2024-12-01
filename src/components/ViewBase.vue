@@ -5,17 +5,18 @@
       <slot name="hero"></slot>
     </div>
     <div class="cards">
-      <slot name="card" v-for="item in entries" :key="item.id" :item="item" />
+      <slot
+        name="card"
+        v-for="item in entries"
+        :key="item.id"
+        :item="item"
+        :isLoading="isLoading"
+      />
     </div>
     <div class="pagination" v-if="!isCastPage">
-      <button
-        class="button is-rounded is-light"
-        @click="currentPage > 1 ? currentPage-- : (currentPage = 1)"
-      >
-        Back
-      </button>
+      <button class="button is-rounded is-light" @click="goToPreviousPage">Back</button>
       <div class="box">{{ currentPage }}</div>
-      <button class="button is-rounded is-light" @click="currentPage++">Next</button>
+      <button class="button is-rounded is-light" @click="goToNextPage">Next</button>
     </div>
   </div>
 </template>
@@ -28,9 +29,25 @@ const props = defineProps(['endpoint', 'headers', 'isCastPage'])
 
 const currentPage = ref(1)
 const entries = ref([])
+const isLoading = ref(false)
+
+const goToPreviousPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--
+  } else {
+    currentPage.value = 1
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+const goToNextPage = () => {
+  currentPage.value++
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 
 const fetchData = async () => {
   try {
+    isLoading.value = true
     let url = ''
     if (props.isCastPage) {
       url = `${props.endpoint}`
@@ -45,8 +62,10 @@ const fetchData = async () => {
       })
       entries.value = res.data.results
     }
+    isLoading.value = false
   } catch (error) {
     console.error('Error fetching data:', error)
+    isLoading.value = false
   }
 }
 
