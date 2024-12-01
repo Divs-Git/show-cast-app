@@ -75,9 +75,7 @@ const goToCastView = () => {
 onMounted(() => {
   if (collection.poster_path) {
     imgUrl.value = `https://image.tmdb.org/t/p/original/${collection.poster_path}`
-  } else {
-    imgUrl.value = '../../src/assets/movie.jpg'
-  }
+  } else imgUrl.value = '../assets/movie.jpg'
 })
 </script>
 

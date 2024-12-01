@@ -129,7 +129,7 @@ const selectSuggestion = (suggestion) => {
 const getPosterUrl = (suggestion) => {
   return suggestion.poster_path
     ? `https://image.tmdb.org/t/p/original/${suggestion.poster_path}`
-    : '../../src/assets/movie.jpg'
+    : '../assets/movie.jpg'
 }
 </script>
 

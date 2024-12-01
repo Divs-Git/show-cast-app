@@ -32,7 +32,7 @@ onMounted(() => {
   if (cast.profile_path) {
     imgUrl.value = `https://image.tmdb.org/t/p/original/${cast.profile_path}`
   } else {
-    imgUrl.value = '../../src/assets/default-avatar-icon-of-social-media-user-vector.jpg'
+    imgUrl.value = '../assets/default-avatar-icon-of-social-media-user-vector.jpg'
   }
 })
 </script>
