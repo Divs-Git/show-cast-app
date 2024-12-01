@@ -19,18 +19,16 @@ const router = createRouter({
       path: '/home',
       redirect: '/',
     },
-    // Collections List View
     {
       path: '/collections/:collectionType',
       name: 'collection-view',
       component: CollectionView,
       beforeEnter: (to, from, next) => {
-        // Ensure `collectionType` is valid
         const validTypes = ['tv', 'movie']
         if (validTypes.includes(to.params.collectionType)) {
           next()
         } else {
-          next({ name: 'not-found' }) // Redirect to NotFound if invalid
+          next({ name: 'not-found' })
         }
       },
     },

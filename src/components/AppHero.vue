@@ -28,12 +28,6 @@ onMounted(() => {
 </script>
 <style lang="scss" scoped>
 .hero {
-  margin: 100px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  flex-direction: column;
   text-align: center; // Ensure text is centered on smaller screens
 
   @media (max-width: 768px) {

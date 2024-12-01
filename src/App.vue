@@ -1,29 +1,36 @@
 <template>
   <header>
-    <div class="title">
+    <div class="HeaderTitle" @click="goToMain">
       <img src="../src/assets/play.png" alt="" width="60px" />
       <h1 class="title is-2">SHOW CASTS</h1>
     </div>
   </header>
   <main>
-    <RouterView />
+    <RouterView :key="$route.fullPath" />
   </main>
 </template>
-<script setup></script>
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const goToMain = () => {
+  router.push('/')
+}
+</script>
 
 <style lang="scss">
 main {
-  min-height: 100vh;
-  min-width: 100vw;
-  padding-bottom: 100px;
+  padding-bottom: 80px;
 }
 header {
   padding: 10px 30px;
 }
-.title {
+.HeaderTitle {
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
 header h1 {

@@ -1,4 +1,3 @@
-<!-- CastCollectionView.vue -->
 <template>
   <ViewBase
     :endpoint="`https://api.themoviedb.org/3/${type}/${id}/credits`"

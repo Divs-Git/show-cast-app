@@ -1,4 +1,3 @@
-<!-- CollectionView.vue -->
 <template>
   <ViewBase
     :endpoint="`https://api.themoviedb.org/3/discover/${collectionType}?include_adult=false&sort_by=popularity.desc`"

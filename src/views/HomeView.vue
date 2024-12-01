@@ -1,5 +1,8 @@
 <template>
   <div class="collection-selector">
+    <div class="search">
+      <AppHero />
+    </div>
     <h1 class="title has-text-centered">Choose From Collections</h1>
     <div class="columns is-centered">
       <div class="column is-5">
@@ -21,6 +24,7 @@
 </template>
 
 <script setup>
+import AppHero from '@/components/AppHero.vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -31,17 +35,27 @@ const selectOption = (collectionType) => {
 </script>
 
 <style lang="scss" scoped>
+.search {
+  z-index: 1000;
+  width: 50%;
+  height: 150px;
+  margin: 0 auto;
+
+  ::v-deep .input-field {
+    width: 100%;
+  }
+}
+
 .collection-selector {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
-  height: 80vh;
-  padding: 0 16px; // Add padding for smaller screens
+  padding: 0 16px;
 
   .title {
-    font-size: 2.5rem; // Adjust title size
+    font-size: 2.5rem;
     margin-bottom: 2rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -49,11 +63,11 @@ const selectOption = (collectionType) => {
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 
     @media (max-width: 768px) {
-      font-size: 2rem; // Scale down for tablets
+      font-size: 2rem;
     }
 
     @media (max-width: 480px) {
-      font-size: 1.5rem; // Further adjust for phones
+      font-size: 1.5rem;
     }
   }
 
@@ -61,10 +75,10 @@ const selectOption = (collectionType) => {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem; // Adjust gap for better alignment on smaller screens
+    gap: 2rem;
 
     @media (max-width: 768px) {
-      gap: 1.5rem; // Reduce gap for tablets
+      gap: 1.5rem;
     }
   }
 
@@ -87,13 +101,13 @@ const selectOption = (collectionType) => {
     background-repeat: no-repeat;
 
     @media (max-width: 768px) {
-      width: 400px; // Adjust width for tablets
-      height: 240px; // Adjust height for tablets
+      width: 400px;
+      height: 240px;
     }
 
     @media (max-width: 480px) {
-      width: 100%; // Full width for phones
-      height: 200px; // Adjust height for phones
+      width: 100%;
+      height: 200px;
     }
 
     &.tv-shows {
@@ -120,11 +134,11 @@ const selectOption = (collectionType) => {
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 
       @media (max-width: 768px) {
-        font-size: 1.25rem; // Adjust font size for tablets
+        font-size: 1.25rem;
       }
 
       @media (max-width: 480px) {
-        font-size: 1rem; // Further adjust for phones
+        font-size: 1rem;
       }
     }
 
@@ -133,11 +147,11 @@ const selectOption = (collectionType) => {
       color: #fff;
 
       @media (max-width: 768px) {
-        font-size: 1.5rem; // Adjust subtitle size for tablets
+        font-size: 1.5rem;
       }
 
       @media (max-width: 480px) {
-        font-size: 1.2rem; // Adjust subtitle size for phones
+        font-size: 1.2rem;
       }
     }
   }

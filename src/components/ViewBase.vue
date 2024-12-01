@@ -1,4 +1,3 @@
-<!-- CollectionViewBase.vue -->
 <template>
   <div class="collection-container">
     <div class="hero-container">
@@ -68,7 +67,6 @@ const fetchData = async () => {
     isLoading.value = false
   }
 }
-
 watch(currentPage, fetchData)
 onMounted(fetchData)
 </script>
@@ -82,8 +80,8 @@ onMounted(fetchData)
 }
 
 .hero-container {
-  height: 400px;
-  padding-top: 80px;
+  height: 200px;
+  padding-top: 20px;
   margin: 0 auto;
   width: 100%;
   max-width: 1300px; // Limit maximum width for larger screens
