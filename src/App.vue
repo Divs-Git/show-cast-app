@@ -1,11 +1,13 @@
 <template>
-  <AppHero />
   <main>
     <RouterView />
   </main>
 </template>
-<script setup>
-import AppHero from './components/AppHero.vue'
-</script>
+<script setup></script>
 
-<style lang="scss"></style>
+<style lang="scss">
+main {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+</style>

@@ -1,5 +1,66 @@
 <template>
-  <div style="color: white; border: 10px solid white">HERO</div>
+  <div class="input-field">
+    <InputField />
+  </div>
+  <div class="hero">
+    <h1 class="title is-1">Movies</h1>
+    <h2 class="subtitle">Subtitle</h2>
+  </div>
 </template>
-<script setup></script>
-<style scoped></style>
+<script setup>
+import InputField from './InputField.vue'
+</script>
+<style lang="scss" scoped>
+.hero {
+  margin: 100px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  text-align: center; // Ensure text is centered on smaller screens
+
+  @media (max-width: 768px) {
+    margin: 60px auto; // Reduce margin for smaller screens
+  }
+
+  @media (max-width: 480px) {
+    margin: 40px auto; // Further reduce margin for very small screens
+  }
+}
+
+.input-field {
+  width: 30%;
+  margin-bottom: 20px; // Add spacing below the input field
+
+  @media (max-width: 768px) {
+    width: 50%; // Adjust width for tablets and smaller devices
+  }
+
+  @media (max-width: 480px) {
+    width: 80%; // Adjust width for phones
+  }
+}
+
+.title {
+  font-size: 2.5rem; // Scale font size for better readability
+  @media (max-width: 768px) {
+    font-size: 2rem; // Adjust font size for smaller screens
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.75rem; // Further adjust font size for very small screens
+  }
+}
+
+.subtitle {
+  font-size: 1.25rem; // Scale font size
+  @media (max-width: 768px) {
+    font-size: 1rem; // Adjust for tablets
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.875rem; // Adjust for phones
+  }
+}
+</style>

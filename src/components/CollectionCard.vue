@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @click="goToCastView">
     <div class="card-image">
       <figure class="image">
         <img
@@ -22,6 +22,9 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const { collection, collectionType } = defineProps(['collection', 'collectionType'])
 
@@ -43,6 +46,11 @@ const trimmedTitle = computed(() => {
     }
   }
 })
+const goToCastView = () => {
+  if (collectionType === 'movie') {
+    router.push({ name: 'movie-casts', params: { id: collection.id } })
+  }
+}
 </script>
 
 <style lang="scss" scoped>

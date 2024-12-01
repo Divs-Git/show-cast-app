@@ -26,7 +26,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const selectOption = (collectionType) => {
-  router.push({ name: 'collections', params: { collectionType } })
+  router.push({ name: 'collection-view', params: { collectionType } })
 }
 </script>
 
@@ -38,21 +38,34 @@ const selectOption = (collectionType) => {
   align-items: center;
   color: white;
   height: 80vh;
+  padding: 0 16px; // Add padding for smaller screens
 
   .title {
-    font-size: 3rem;
-    margin-bottom: 3rem;
+    font-size: 2.5rem; // Adjust title size
+    margin-bottom: 2rem;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+
+    @media (max-width: 768px) {
+      font-size: 2rem; // Scale down for tablets
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.5rem; // Further adjust for phones
+    }
   }
 
   .columns {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 3rem;
+    gap: 2rem; // Adjust gap for better alignment on smaller screens
+
+    @media (max-width: 768px) {
+      gap: 1.5rem; // Reduce gap for tablets
+    }
   }
 
   .card {
@@ -72,6 +85,16 @@ const selectOption = (collectionType) => {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    @media (max-width: 768px) {
+      width: 400px; // Adjust width for tablets
+      height: 240px; // Adjust height for tablets
+    }
+
+    @media (max-width: 480px) {
+      width: 100%; // Full width for phones
+      height: 200px; // Adjust height for phones
+    }
 
     &.tv-shows {
       background-image: url('https://m.media-amazon.com/images/S/pv-target-images/b5ab0e5792e602302fe439cb0fd2365980ce21c3cc97d6f345d7a5bb7a2c3fe1.jpg');
@@ -95,11 +118,27 @@ const selectOption = (collectionType) => {
       font-weight: bold;
       object-fit: cover;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+
+      @media (max-width: 768px) {
+        font-size: 1.25rem; // Adjust font size for tablets
+      }
+
+      @media (max-width: 480px) {
+        font-size: 1rem; // Further adjust for phones
+      }
     }
 
     .subtitle {
       font-size: 1.8rem;
       color: #fff;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem; // Adjust subtitle size for tablets
+      }
+
+      @media (max-width: 480px) {
+        font-size: 1.2rem; // Adjust subtitle size for phones
+      }
     }
   }
 }
